@@ -41,7 +41,7 @@ pip install -r requirements.txt
 - matplotlib, seaborn （图表绘制）  
 - streamlit（可视化交互平台，可选）  
 
-## 实现过程
+## 实现过程（预计）
 
 # 步骤1：裁剪图像至研究区范围  
 python preprocess/crop_image.py  
