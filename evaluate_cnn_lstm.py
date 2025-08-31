@@ -1,31 +1,29 @@
-# predict_vis.py 
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-
 import numpy as np
 import torch
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score
 import matplotlib.pyplot as plt
+
 from model import CNN_LSTM
 
 # 配置路径
 DATA_PREPARED = "data_prepared"
 MODEL_PATH = "models/cnn_lstm.pth"
-BATCH_SIZE = 16  #
-OUT_DIR = "predict_results"
-os.makedirs(OUT_DIR, exist_ok=True)
+BATCH_SIZE = 16  # 小批量处理，防止卡死
 
 # === 加载数据 ===
 X = np.load(os.path.join(DATA_PREPARED, "X_seq.npy"))
 Y = np.load(os.path.join(DATA_PREPARED, "Y.npy"))
 classes = np.load(os.path.join(DATA_PREPARED, "classes.npy"))
 
-print(f"[INFO] 模型输入形状: SEQ_LEN={X.shape[1]}, C={X.shape[2]}, H={X.shape[3]}, W={X.shape[4]}")
+print(f"[INFO] 数据集形状: X={X.shape}, Y={Y.shape}")
 print(f"[INFO] 类别数: {len(classes)}, 类别: {classes}")
 
 # 转为 Tensor
 X_tensor = torch.tensor(X, dtype=torch.float32)
+Y_tensor = torch.tensor(Y, dtype=torch.long)
 
-# === 定义模型 ===
+# === 定义模型（保持与训练时一致）===
 SEQ_LEN, C, H, W = X.shape[1:]
 model = CNN_LSTM(
     in_channels=C,
@@ -34,10 +32,12 @@ model = CNN_LSTM(
     lstm_layers=1,
     num_classes=len(classes)
 )
+
+# === 加载模型参数 ===
 model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
 model.eval()
 
-# === 批量预测 ===
+# === 分批预测 ===
 all_preds = []
 with torch.no_grad():
     for i in range(0, len(X_tensor), BATCH_SIZE):
@@ -48,17 +48,16 @@ with torch.no_grad():
 
 all_preds = np.array(all_preds)
 
-# === 可视化部分预测结果 ===
-num_show = min(10, len(X))  # 只显示前10个样本
-for idx in range(num_show):
-    true_label = classes[Y[idx]]
-    pred_label = classes[all_preds[idx]]
+# === 计算准确率 ===
+acc = accuracy_score(Y, all_preds)
+print(f"[INFO] 模型在全部数据上的准确率: {acc:.4f}")
 
-    img = np.transpose(X[idx, 0], (1, 2, 0))  # 取时间序列第1帧，C,H,W -> H,W,C
-    plt.imshow(img)
-    plt.title(f"True: {true_label}, Pred: {pred_label}")
-    plt.axis("off")
-    plt.savefig(os.path.join(OUT_DIR, f"sample_{idx}.png"), dpi=150)
-    plt.close()
-
-print(f"[INFO] 已保存 {num_show} 个预测可视化结果到 {OUT_DIR}")
+# === 混淆矩阵可视化 ===
+cm = confusion_matrix(Y, all_preds)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=classes)
+fig, ax = plt.subplots(figsize=(8, 6))
+disp.plot(ax=ax, cmap=plt.cm.Blues, colorbar=False)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("confusion_matrix.png", dpi=300)
+print("[INFO] 混淆矩阵已保存为 confusion_matrix.png")
