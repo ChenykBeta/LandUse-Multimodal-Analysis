@@ -28,6 +28,9 @@
 
 ## 基于EuroSAT数据的项目结构
 
+
+```markdown
+```
 LandUse-DeepPredictor/
 ├── data/                # EuroSAT 数据
 │   └── EuroSAT/         # 原始数据目录
@@ -42,9 +45,14 @@ LandUse-DeepPredictor/
 ├── visualize/           # 可视化脚本
 │   └── draw_map.py      # 结果绘图
 ├── output/              # 输出结果（图像、模型等）
+└── report/              # 项目报告与总结（待填充）
+```
 
+环境配置将在下文的正式版本中提及，这里不再赘述。
+```
 
-环境配置将在下文的正式版本中提及，这里不再赘述
+---
+
 
 ## 使用流程
 
