@@ -29,7 +29,7 @@
 ## 基于EuroSAT数据的项目结构
 
 ```
-LandUse-DeepPredictor/
+LandUse-Pedecit/
 ├── data/                # EuroSAT 数据
 │   └── EuroSAT/         # 原始数据目录
 ├── preprocess/          # 数据预处理脚本
@@ -186,7 +186,7 @@ conda activate landuse
 # 安装依赖
 pip install torch torchvision pillow numpy tqdm matplotlib
 ```
-
+代码位于foreurosat或者forCLCD
 ### 2. 数据准备
 
 请将您的数据集按照 `data/CLCD/` 的结构组织，确保包含 `train`, `val`, `test` 三个子集，每个子集下包含 `time1`, `time2`, 和 `label` (仅训练/验证集需要) 文件夹。
