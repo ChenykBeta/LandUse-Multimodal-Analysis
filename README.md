@@ -96,11 +96,11 @@ LandUse-Multimodal-Analysis/
 ├── requirements.txt               # Python 依赖包
 └── README.md                      # 项目文档
 ```
-CropLand Change Dection （CLCD） 数据集
+###CropLand Change Dection （CLCD） 数据集
 CLCD数据集由600对耕地变化样本图像组成，其中360对用于训练，120对用于验证，120对用于测试。 CLCD中的双时叶图像分别由中国广东省高分二号于2017年和2019年采集，空间分辨率范围为0.5-2 m。每组样本由512×512两张图像和相应的耕地变化二进制标签组成。
 
-下载 CLCD 数据集：OneDrive |百度
-下载 HRSCD 数据集
+下载 CLCD 数据集：[OneDrive](https://mail2sysueducn-my.sharepoint.com/:f:/g/personal/liumx23_mail2_sysu_edu_cn/Ejm7aufQREdIhYf5yxSZDIkBr68p2AUQf_7BAEq4vmV0pg?e=ZWI3oy) |https://pan.baidu.com/s/1Un-bVxUm1N9IHiDOXLLHlg?pwd=miu2
+
 
 数据灵感来源于：@ARTICLE{9780164,
   author={Liu, Mengxi and Chai, Zhuoqun and Deng, Haojun and Liu, Rong},
