@@ -28,8 +28,6 @@
 
 ## 基于EuroSAT数据的项目结构
 
-
-```markdown
 ```
 LandUse-DeepPredictor/
 ├── data/                # EuroSAT 数据
@@ -94,9 +92,9 @@ LandUse-Multimodal-Analysis/
 ├── results_UNet/                  # UNet 模型的预测结果
 ├── results_CNN_LSTM_Model/        # CNN-LSTM 模型的预测结果
 ├── results_CNN_LSTM_Model_Simple/ # CNN-LSTM-Simple 模型的预测结果
-├── dataset.py                     # 📂 核心：数据集定义与加载
-├── train.py                       # 🚀 核心：模型训练与验证
-├── evaluate.py                    # 🎯 核心：模型评估与结果生成
+├── dataset.py                     #  核心：数据集定义与加载
+├── train.py                       #  核心：模型训练与验证
+├── evaluate.py                    #  核心：模型评估与结果生成
 ├── requirements.txt               # Python 依赖包
 └── README.md                      # 项目文档
 ```
