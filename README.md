@@ -28,7 +28,7 @@
 
 ## 项目结构
 
-LandUse-DeepPredictor/
+、、andUse-DeepPredictor/
 ├── data/                # EuroSAT 数据
 │   └── EuroSAT/         # 原始数据目录
 ├── preprocess/          # 数据预处理脚本
