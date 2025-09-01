@@ -1,13 +1,9 @@
-```markdown
 # LandUse-Multimodal-Analysis
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **基于多模态融合的深度学习土地利用变化检测与预测系统**
 
 本项目旨在利用深度学习技术，融合多时相遥感影像，实现高精度的土地利用变化检测与动态预测。系统以 `dataset.py`, `train.py`, `evaluate.py` 三大核心脚本为驱动，构建了从数据加载、模型训练到结果评估的完整自动化流程，为土地资源管理提供智能化分析工具。
 
----
 
 ## 项目亮点
 
