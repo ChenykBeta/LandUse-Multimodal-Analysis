@@ -26,23 +26,34 @@
 
 
 
-## 项目结构
+## 基于EuroSAT数据的项目结构
 
-、、andUse-DeepPredictor/
+LandUse-DeepPredictor/
 ├── data/                # EuroSAT 数据
+
 │   └── EuroSAT/         # 原始数据目录
+
 ├── preprocess/          # 数据预处理脚本
+
 │   └── crop_image.py    # 图像裁剪（示例）
+
 ├── classify_model/      # 分类模型代码
+
 │   └── train_cnn.py     # CNN 模型训练
+
 ├── forecast_model/      # 预测模型代码
+
 │   └── train_lstm.py    # LSTM 模型训练
+
 ├── analysis/            # 变化分析脚本
+
 │   └── land_change_analysis.py
 ├── visualize/           # 可视化脚本
+
 │   └── draw_map.py      # 结果绘图
+
 ├── output/              # 输出结果（图像、模型等）
-└── report/              # 项目报告与总结（待填充）
+
 
 环境配置将在下文的正式版本中提及，这里不再赘述
 
